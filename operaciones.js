@@ -1,27 +1,28 @@
 const fs = require('fs')
- const readcitas = (nameFile)=>{
-    const content = fs.readFileSync(nameFile, 'utf8',function (err){
-        if (err){
+const readCitas = (nameFile) => {
+    const content = fs.readFileSync(nameFile, 'utf8', function (err) {
+        if (err) {
             console.log(err)
         }
-        else{
+        else {
             console.log('File readed')
-        }        
+        }
     })
     const contentJson = JSON.parse(content)
     console.log(contentJson)
 
 }
-const recordcitas = (nameFile, addContent) =>{
+const recordCitas = (nameFile, addContent) => {
     const oldContent = fs.readFileSync(nameFile, 'utf8')
     const newContent = JSON.parse(oldContent).concat(addContent)
-    fs.writeFileSync(nameFile, JSON.stringify(newContent), function (err){
-        if (err){
+    fs.writeFileSync(nameFile, JSON.stringify(newContent), function (err) {
+        if (err) {
             console.log(err)
         }
-        else{
+        else {
             console.log('citas added')
-        }   
-    })
+        }
+    });
+    return 'Cita agregada exitosamente';
 }
-module.exports = { readcitas, recordcitas } 
+module.exports = { readCitas, recordCitas } 
